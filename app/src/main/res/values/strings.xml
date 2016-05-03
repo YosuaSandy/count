@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Quickcount</string>
+    <string name="coba">coba</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="action_settings">Action Setting</string>
+    <string name="title_activity_test">test</string>
+    <string name="title_activity_mainmenu">Mainmenu</string>
+    <string name="title_activity_profil">Profil</string>
+    <string name="nama">nama</string>
+    <string name="title_activity_keterangan">Keterangan</string>
+    <string name="prefs_theme_key">theme</string>
+    <string name="background">background</string>
+    <string name="subjudul">Menu utama</string>
+    <string name="title_activity_searchresult">searchresult</string>
+    <string name="search_hint">search_hint</string>
+</resources>

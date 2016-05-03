@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\Magang\\quickcount\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
+        "source": "D:\\Magang\\quickcount\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Magang\\quickcount\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\woclass.png",
+        "source": "D:\\Magang\\quickcount\\app\\src\\main\\res\\mipmap-xxxhdpi\\woclass.png"
+    }
+]

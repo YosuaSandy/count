@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.sandy.quickcount.Keterangan"
+    tools:showIn="@layout/activity_keterangan">
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+    <RelativeLayout xmlns:android= "http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/relativeutama"
+        >
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view1"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardBackgroundColor="@color/red"
+        card_view:cardElevation="5dp"
+        card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout xmlns:android= "http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:id="@+id/relative2"
+        >
+
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:text="Label : "
+            android:textSize="21dp"
+            android:id="@+id/textlabel1"
+            android:layout_centerVertical="true"
+
+            />
+
+        <EditText
+            android:id="@+id/edtlabel1"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:textSize="21dp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/textlabel1"
+            android:background="@color/white"
+
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:text="Label : "
+            android:textSize="21dp"
+            android:id="@+id/textlabel2"
+            android:layout_below="@+id/textlabel1"
+            android:layout_marginTop="50dp"
+            />
+
+        <EditText
+            android:id="@+id/edtlabel2"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:textSize="21dp"
+            android:singleLine="true"
+            android:layout_toRightOf="@+id/textlabel2"
+            android:layout_below="@+id/textlabel1"
+            android:background="@color/white"
+            android:layout_marginTop="50dp"
+
+            />
+
+
+
+
+
+    </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view2"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardBackgroundColor="@color/red"
+        card_view:cardElevation="5dp"
+        card_view:cardUseCompatPadding="true"
+        android:layout_below="@+id/card_view1">
+
+    <RelativeLayout xmlns:android= "http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="40dp"
+        android:id="@+id/relative3"
+        android:layout_below="@+id/relative2"
+        >
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:text="Calon 1 : "
+            android:textSize="21dp"
+            android:id="@+id/textlabel3"
+
+            />
+
+        <EditText
+            android:id="@+id/edtlabel3"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:textSize="21dp"
+            android:singleLine="true"
+            android:layout_toRightOf="@+id/textlabel3"
+            android:background="@color/white"
+
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:text="Calon 2 : "
+            android:textSize="21dp"
+            android:id="@+id/textlabel4"
+            android:layout_below="@+id/textlabel3"
+            android:layout_marginTop="20dp"
+            />
+
+        <EditText
+            android:id="@+id/edtlabel4"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:textSize="21dp"
+            android:singleLine="true"
+            android:layout_toRightOf="@+id/textlabel4"
+            android:layout_below="@+id/textlabel3"
+            android:background="@color/white"
+            android:layout_marginTop="20dp"
+
+            />
+
+
+
+    </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view3"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardBackgroundColor="@color/red"
+        android:layout_marginTop="20dp"
+        card_view:cardElevation="5dp"
+        card_view:cardUseCompatPadding="true"
+        android:layout_below="@+id/card_view2">
+
+    <RelativeLayout xmlns:android= "http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="40dp"
+
+        android:id="@+id/relative4"
+        android:layout_below="@+id/relative3"
+        >
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:text="Suara Sah : "
+            android:textSize="21dp"
+            android:id="@+id/textlabel5"
+
+            />
+
+        <TextView
+            android:id="@+id/edtlabel5"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:textSize="21dp"
+            android:layout_marginLeft="57dp"
+            android:singleLine="true"
+            android:layout_toRightOf="@+id/textlabel5"
+            android:background="@color/white"
+
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:text="Suara Tidak Sah : "
+            android:textSize="21dp"
+            android:id="@+id/textlabel6"
+            android:layout_below="@+id/textlabel5"
+            android:layout_marginTop="20dp"
+            />
+
+        <EditText
+            android:id="@+id/edtlabel6"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:textSize="21dp"
+            android:singleLine="true"
+            android:layout_toRightOf="@+id/textlabel6"
+            android:layout_below="@+id/textlabel5"
+            android:background="@color/white"
+            android:layout_marginTop="20dp"
+
+            />
+
+
+
+    </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+    </ScrollView>
+
+
+
+
+</RelativeLayout>
