@@ -55,7 +55,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/white"
+        android:textColor="@color/orange"
         android:textStyle="bold"
         android:singleLine="true"
         android:ellipsize="end"
@@ -73,7 +73,7 @@
         android:layout_centerHorizontal="true"
         android:singleLine="true"
         android:ellipsize="end"
-        android:textColor="@color/white"
+        android:textColor="@color/orange_dark"
         android:layout_below="@+id/url"
         />
 
