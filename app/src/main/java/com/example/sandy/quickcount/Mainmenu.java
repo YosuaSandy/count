@@ -10,32 +10,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.style.BackgroundColorSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +48,8 @@ public class Mainmenu extends AppCompatActivity  {
     private Context mContext;
     private SearchView mSearchView;
     private TextView mStatusView;
+    String tag_string_req = "req_data";
+    private static final String TAG = "Mainmenu";
 
 
     public static final String DATA_URL = "http://192.168.42.125:8080/xampp/quickcount/wilayah.php";
@@ -83,11 +77,57 @@ public class Mainmenu extends AppCompatActivity  {
         rView.addItemDecoration(new HorizontalSpaceDecoration(HORIZONTAL_ITEM_SPACE, LEFT_ITEM_SPACE));
         rView.setHasFixedSize(true);
         rView.setLayoutManager(lLayout);
-        rowListItem = getAllItemList();
+//        rowListItem = getAllItemList();
+        final NamaAdapter rcAdapter = new NamaAdapter(Mainmenu.this, rowListItem);
+        rView.setAdapter(rcAdapter);
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(DATA_URL, new Response.Listener<JSONObject>() {
 
-//        request_data();
-//        final NamaAdapter rcAdapter = new NamaAdapter(Mainmenu.this, rowListItem);
-//        rView.setAdapter(rcAdapter);
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+
+                    if (response.length() == 0 || response == null) {
+                        rowListItem.clear();
+                        for (int i = 0; i < response.length(); i++) {
+                            JSONObject jsonObject = response.getJSONObject("wilayah");
+                            nama person = new nama();
+                            if (!jsonObject.isNull(TAG_NAME)) {
+                                person.nama = jsonObject.getString(TAG_NAME);
+                                Toast.makeText(Mainmenu.this,"kolom nama berhasil ditampilkan",Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(Mainmenu.this,"kolom nama tidak berhasil ditampilkan",Toast.LENGTH_SHORT).show();
+                            }
+                            if (!jsonObject.isNull(TAG_URL)) {
+                                person.nama = jsonObject.getString(TAG_URL);
+                                Toast.makeText(Mainmenu.this,"kolom URL berhasil ditampilkan",Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(Mainmenu.this,"kolom URL tidak berhasil ditampilkan",Toast.LENGTH_SHORT).show();
+                            }
+                            rowListItem.add(i, person);
+                        }
+                        rcAdapter.notifyDataSetChanged();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(),
+                            "Error: " + e.getMessage(),
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // do something
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest,tag_string_req);
+
 
     }
 
@@ -122,7 +162,7 @@ public class Mainmenu extends AppCompatActivity  {
     private List<nama> getAllItemList() {
 
 
-        List<nama> allItems = new ArrayList<nama>();
+        final List<nama> allItems = new ArrayList<nama>();
         allItems.add(new nama("Joko", "woclass"));
         allItems.add(new nama("Retno", "woclass"));
         allItems.add(new nama("Painem", "woclass"));
@@ -141,52 +181,8 @@ public class Mainmenu extends AppCompatActivity  {
 
 
 
-//    public void request_data () {
-//        final NamaAdapter rcAdapter = new NamaAdapter(Mainmenu.this, rowListItem);
-//        rView.setAdapter(rcAdapter);
-//
-//        RequestQueue requestQueue = Volley.newRequestQueue(mContext);
-//        String link = "http://192.168.42.125:8080/xampp/quickcount/wilayah.php";
-//
-//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(link, new Response.Listener<JSONArray>() {
-//
-//            @Override
-//            public void onResponse(JSONArray response) {
-//                try {
-//                    if (response.length() == 0 || response == null) {
-//                        rowListItem.clear();
-//                        for (int i = 0; i < response.length(); i++) {
-//                            JSONObject jsonObject = response.getJSONObject(i);
-//                            nama person = new nama();
-//                            if (!jsonObject.isNull("nama")) {
-//                                person.nama = jsonObject.getString("nama");
-//                                Log.d("NAMA",nama);
-//                            }
-//                            if (!jsonObject.isNull("url")) {
-//                                person.nama = jsonObject.getString("url");
-//                            }
-//                            rowListItem.add(i, person);
-//                        }
-//                        rcAdapter.notifyDataSetChanged();
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                // do something
-//            }
-//        });
-//
-//        requestQueue.add(jsonArrayRequest);
-//
-//
-// }
 
-
-    }
+}
 
 
 

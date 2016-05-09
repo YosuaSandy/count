@@ -28,8 +28,9 @@ public class NamaAdapter extends RecyclerView.Adapter<NamaAdapter.RecycleViewHol
 
 
 
-    private List<nama> itemList;
+    private List<nama> itemList ;
     private Context context;
+
 
 
 
@@ -58,7 +59,10 @@ public class NamaAdapter extends RecyclerView.Adapter<NamaAdapter.RecycleViewHol
     @Override
     public int getItemCount() {
 
-        return this.itemList.size();
+        if (itemList != null) {
+            return  this.itemList.size();
+        }
+        return 0;
     }
 
     class RecycleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -76,7 +80,7 @@ public class NamaAdapter extends RecyclerView.Adapter<NamaAdapter.RecycleViewHol
             itemView.setOnClickListener(this);
             Nama = (TextView)itemView.findViewById(R.id.nama);
             Url = (TextView)itemView.findViewById(R.id.url);
-            itemView.setBackgroundResource(R.color.red);
+            itemView.setBackgroundResource(R.color.white);
 
 
         }

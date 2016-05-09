@@ -58,19 +58,9 @@ public class Profil extends AppCompatActivity {
                 onBackPressed();
             }
         });
-//        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-
-//        recyclerView.setAdapter(tAdapter);
-//        RecyclerView.LayoutManager tLayoutManager = new LinearLayoutManager(getApplicationContext());
-//        recyclerView.setLayoutManager(tLayoutManager);
-//        recyclerView.setItemAnimator(new DefaultItemAnimator());
-//        recyclerView.setAdapter(tAdapter);
         List<TPU> rowListItem = prepareTPU();
-//        recyclerView = new RecyclerView(Profil.this);
-
         RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-//        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         rView.setLayoutManager(layoutManager);
 
@@ -108,16 +98,6 @@ public class Profil extends AppCompatActivity {
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
                 return true;
-
-//            case R.id.back:
-//                onBackPressed();
-//
-//                return true;
-
-//            case R.id.home:
-//                onBackPressed();
-//
-//                return true;
 
             default:
                 // If we got here, the user's action was not recognized.
