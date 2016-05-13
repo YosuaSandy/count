@@ -5,20 +5,21 @@ import android.widget.ImageView;
 /**
  * Created by Sandy on 4/11/2016.
  */
-public class nama {
-    String nama,url;
-    boolean selected;
-    public nama(){
+public class Nama {
+    String nama,kode_wilayah;
+   boolean selected;
+
+    Nama(){
 
     }
 
-    public nama (String nama,String url)
+    public Nama (String nama,String url)
     {
         this.nama =    nama;
-        this.url = url;
+        this.kode_wilayah = url;
     }
 
-    public String getnama(){
+    public String getNama(){
         return nama;
     }
 
@@ -29,12 +30,12 @@ public class nama {
         this.selected = selected;
     }
 
-    public String geturl (){
-        return url;
+    public String getUrl (){
+        return kode_wilayah;
     }
 
     public void seturl(String url){
-        this.url=url;
+        this.kode_wilayah=url;
     }
 
     public void setNama(String nama){

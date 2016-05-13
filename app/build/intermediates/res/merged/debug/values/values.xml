@@ -1386,6 +1386,7 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="colorPrimary">@color/orange_dark</item>
         <item name="colorPrimaryDark">@color/black</item>
+        <item name="android:windowBackground">@color/orange_light</item>
         <item name="colorAccent">@color/green</item>
     </style>
     <style name="Platform.AppCompat" parent="android:Theme">

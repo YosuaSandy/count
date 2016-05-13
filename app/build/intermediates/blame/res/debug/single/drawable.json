@@ -60,6 +60,10 @@
         "source": "D:\\Magang\\quickcount\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.2.1\\res\\drawable\\design_snackbar_background.xml"
     },
     {
+        "merged": "D:\\Magang\\quickcount\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_launcher.png",
+        "source": "D:\\Magang\\quickcount\\app\\src\\main\\res\\drawable\\ic_launcher.png"
+    },
+    {
         "merged": "D:\\Magang\\quickcount\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_light.xml",
         "source": "D:\\Magang\\quickcount\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_list_selector_holo_light.xml"
     },
@@ -138,5 +142,9 @@
     {
         "merged": "D:\\Magang\\quickcount\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_track_material.xml",
         "source": "D:\\Magang\\quickcount\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\drawable\\abc_seekbar_track_material.xml"
+    },
+    {
+        "merged": "D:\\Magang\\quickcount\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\kpu.png",
+        "source": "D:\\Magang\\quickcount\\app\\src\\main\\res\\drawable\\kpu.png"
     }
 ]

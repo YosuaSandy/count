@@ -28,14 +28,14 @@ public class NamaAdapter extends RecyclerView.Adapter<NamaAdapter.RecycleViewHol
 
 
 
-    private List<nama> itemList ;
+    private List<Nama> itemList ;
     private Context context;
 
 
 
 
 
-    public NamaAdapter(Context context, List<nama> itemList) {
+    public NamaAdapter(Context context, List<Nama> itemList) {
         this.itemList = itemList;
         this.context = context;
     }
@@ -50,8 +50,8 @@ public class NamaAdapter extends RecyclerView.Adapter<NamaAdapter.RecycleViewHol
 
         @Override
         public void onBindViewHolder(RecycleViewHolder holder, int position) {
-            holder.Nama.setText(itemList.get(position).getnama());
-            holder.Url.setText(itemList.get(position).geturl());
+            holder.Nama.setText(itemList.get(position).getNama());
+            holder.Url.setText(itemList.get(position).getUrl());
 
 
         }

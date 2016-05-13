@@ -1,7 +1,4 @@
 package com.example.sandy.quickcount;
-
-
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +15,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -30,13 +28,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Mainmenu extends AppCompatActivity  {
 
     String nama;
     private GridLayoutManager lLayout;
     private RecyclerView rView;
-    private List<nama> rowListItem;
+    private List<Nama> rowListItem;
     private static final int VERTICAL_ITEM_SPACE = 10;
     private static final int TOP_ITEM_SPACE = 10;
     private static final int LEFT_ITEM_SPACE = 10;
@@ -49,12 +48,14 @@ public class Mainmenu extends AppCompatActivity  {
     private SearchView mSearchView;
     private TextView mStatusView;
     String tag_string_req = "req_data";
-    private static final String TAG = "Mainmenu";
+    private static final String TAG = Mainmenu.class.getSimpleName();
+
 
 
     public static final String DATA_URL = "http://192.168.42.125:8080/xampp/quickcount/wilayah.php";
     public static final String TAG_NAME = "nama";
-    public static final String TAG_URL = "url";
+    public static final String TAG_URL = "kode_wilayah";
+    private String jsonResponse;
 
 
     @Override
@@ -77,37 +78,29 @@ public class Mainmenu extends AppCompatActivity  {
         rView.addItemDecoration(new HorizontalSpaceDecoration(HORIZONTAL_ITEM_SPACE, LEFT_ITEM_SPACE));
         rView.setHasFixedSize(true);
         rView.setLayoutManager(lLayout);
-//        rowListItem = getAllItemList();
+        rowListItem = getAllItemList();
         final NamaAdapter rcAdapter = new NamaAdapter(Mainmenu.this, rowListItem);
         rView.setAdapter(rcAdapter);
-        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(DATA_URL, new Response.Listener<JSONObject>() {
-
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET,DATA_URL, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                Log.d(TAG, response.toString());
                 try {
-
-                    if (response.length() == 0 || response == null) {
-                        rowListItem.clear();
-                        for (int i = 0; i < response.length(); i++) {
-                            JSONObject jsonObject = response.getJSONObject("wilayah");
-                            nama person = new nama();
-                            if (!jsonObject.isNull(TAG_NAME)) {
-                                person.nama = jsonObject.getString(TAG_NAME);
-                                Toast.makeText(Mainmenu.this,"kolom nama berhasil ditampilkan",Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(Mainmenu.this,"kolom nama tidak berhasil ditampilkan",Toast.LENGTH_SHORT).show();
-                            }
-                            if (!jsonObject.isNull(TAG_URL)) {
-                                person.nama = jsonObject.getString(TAG_URL);
-                                Toast.makeText(Mainmenu.this,"kolom URL berhasil ditampilkan",Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                Toast.makeText(Mainmenu.this,"kolom URL tidak berhasil ditampilkan",Toast.LENGTH_SHORT).show();
-                            }
+                    JSONArray jsonArray = response.getJSONArray("wilayah");
+                    if (jsonArray.length() > 0 || jsonArray != null) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            Nama person = new Nama();
+                            Log.d(TAG, jsonObject.toString());
+                            person.nama = jsonObject.getString(TAG_NAME);
+                            person.kode_wilayah= jsonObject.getString(TAG_URL);
                             rowListItem.add(i, person);
+                            Log.d(TAG, jsonObject.toString());
                         }
                         rcAdapter.notifyDataSetChanged();
+                        Log.d(TAG, response.toString());
                     }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(),
@@ -127,8 +120,7 @@ public class Mainmenu extends AppCompatActivity  {
         });
 
         AppController.getInstance().addToRequestQueue(jsonArrayRequest,tag_string_req);
-
-
+        Log.d(TAG, jsonArrayRequest.toString());
     }
 
 
@@ -159,23 +151,21 @@ public class Mainmenu extends AppCompatActivity  {
     }
 
 
-    private List<nama> getAllItemList() {
-
-
-        final List<nama> allItems = new ArrayList<nama>();
-        allItems.add(new nama("Joko", "woclass"));
-        allItems.add(new nama("Retno", "woclass"));
-        allItems.add(new nama("Painem", "woclass"));
-        allItems.add(new nama("Paijo", "woclass"));
-        allItems.add(new nama("Ratna", "woclass"));
-        allItems.add(new nama("Jono", "woclass"));
-        allItems.add(new nama("Joni", "woclass"));
-        allItems.add(new nama("Indah", "woclass"));
-        allItems.add(new nama("Retro", "woclass"));
-
+    private List<Nama> getAllItemList() {
+//
+//
+        final List<Nama> allItems = new ArrayList<Nama>();
+//        allItems.add(new nama("Joko", "woclass"));
+//        allItems.add(new nama("Retno", "woclass"));
+//        allItems.add(new nama("Painem", "woclass"));
+//        allItems.add(new nama("Paijo", "woclass"));
+//        allItems.add(new nama("Ratna", "woclass"));
+//        allItems.add(new nama("Jono", "woclass"));
+//        allItems.add(new nama("Joni", "woclass"));
+//        allItems.add(new nama("Indah", "woclass"));
+//        allItems.add(new nama("Retro", "woclass"));
+//
         return allItems;
-
-
     }
 
 
