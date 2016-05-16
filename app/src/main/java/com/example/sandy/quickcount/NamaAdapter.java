@@ -24,12 +24,17 @@ import static com.example.sandy.quickcount.R.drawable.round;
 /**
  * Created by Sandy on 4/8/2016.
  */
-public class NamaAdapter extends RecyclerView.Adapter<NamaAdapter.RecycleViewHolder> {
 
+
+public class NamaAdapter extends RecyclerView.Adapter<NamaAdapter.RecycleViewHolder> {
 
 
     private List<Nama> itemList ;
     private Context context;
+    public static final String DATA_URL = "http://192.168.42.125:8080/xampp/quickcount/kelurahan.php";
+    public static final String TAG_NAME = "nama";
+    public static final String TAG_URL = "kode_wilayah";
+    private String mst_kode_wilayah;
 
 
 
@@ -88,9 +93,7 @@ public class NamaAdapter extends RecyclerView.Adapter<NamaAdapter.RecycleViewHol
 
         @Override
         public void onClick(View view) {
-            Context.startActivity(new Intent(Context, Profil.class));
-
-
+            Context.startActivity(new Intent(Context, Profil.class).putExtra(TAG_URL,mst_kode_wilayah));
         }
     }
 

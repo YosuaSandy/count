@@ -23,8 +23,17 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +42,14 @@ public class Profil extends AppCompatActivity {
    private RecyclerView recyclerView;
     private TPUAdapter tAdapter;
     private  Context context;
+    private static final String TAG = Profil.class.getSimpleName();
+    String tag_string_req = "req_data";
+    private List<TPU> rowListItem;
+
+
+    public static final String DATA_URL = "http://192.168.42.125:8080/xampp/quickcount/kelurahan.php";
+    public static final String TAG_NAME = "nama";
+    public static final String TAG_URL = "kode_wilayah";
 
 
 
@@ -58,14 +75,54 @@ public class Profil extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        List<TPU> rowListItem = prepareTPU();
+        rowListItem = prepareTPU();
         RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         rView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         rView.setLayoutManager(layoutManager);
 
-        TPUAdapter rcAdapter = new TPUAdapter(Profil.this, rowListItem);
-        rView.setAdapter(rcAdapter);
+        final TPUAdapter adapter = new TPUAdapter(Profil.this, rowListItem);
+        rView.setAdapter(adapter);
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.POST,DATA_URL, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d(TAG, response.toString());
+                try {
+                    JSONArray jsonArray = response.getJSONArray("kelurahan");
+                    if (jsonArray.length() > 0 || jsonArray != null) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                           TPU person = new TPU();
+                            Log.d(TAG, jsonObject.toString());
+                            person.nama = jsonObject.getString(TAG_NAME);
+                            person.kode_wilayah= jsonObject.getString(TAG_URL);
+                            rowListItem.add(i, person);
+                            Log.d(TAG, jsonObject.toString());
+                        }
+                        adapter.notifyDataSetChanged();
+                        Log.d(TAG, response.toString());
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(),
+                            "Error: " + e.getMessage(),
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // do something
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest,tag_string_req);
+        Log.d(TAG, jsonArrayRequest.toString());
 
 
 
@@ -157,12 +214,12 @@ public class Profil extends AppCompatActivity {
     }
     private List<TPU> prepareTPU() {
         List<TPU> allItems = new ArrayList<TPU>();
-        allItems.add( new TPU("13", "Pedurungan"));
-        allItems.add(new TPU("15", "Pedurungan"));
-        allItems.add(new TPU("05", "Pedurungan"));
-        allItems.add(new TPU("07", "Pedurungan"));
-        allItems.add(new TPU("09", "Pedurungan"));
-        allItems.add(new TPU("27", "Pedurungan"));
+//        allItems.add( new TPU("13", "Pedurungan"));
+//        allItems.add(new TPU("15", "Pedurungan"));
+//        allItems.add(new TPU("05", "Pedurungan"));
+//        allItems.add(new TPU("07", "Pedurungan"));
+//        allItems.add(new TPU("09", "Pedurungan"));
+//        allItems.add(new TPU("27", "Pedurungan"));
         return allItems;
 
 
