@@ -2853,9 +2853,11 @@ containing a value of this type.
         public static final int title_activity_keterangan=0x7f07003f;
         public static final int title_activity_mainmenu=0x7f070040;
         public static final int title_activity_menu=0x7f070041;
-        public static final int title_activity_profil=0x7f070042;
-        public static final int title_activity_searchresult=0x7f070043;
-        public static final int title_activity_test=0x7f070044;
+        public static final int title_activity_pemilihan=0x7f070042;
+        public static final int title_activity_pilihan=0x7f070043;
+        public static final int title_activity_profil=0x7f070044;
+        public static final int title_activity_searchresult=0x7f070045;
+        public static final int title_activity_test=0x7f070046;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0a0088;

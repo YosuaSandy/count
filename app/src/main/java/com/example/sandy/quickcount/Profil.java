@@ -23,12 +23,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -36,7 +38,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Profil extends AppCompatActivity {
    private RecyclerView recyclerView;
@@ -45,20 +49,16 @@ public class Profil extends AppCompatActivity {
     private static final String TAG = Profil.class.getSimpleName();
     String tag_string_req = "req_data";
     private List<TPU> rowListItem;
-
+    private  String code;
 
     public static final String DATA_URL = "http://192.168.42.125:8080/xampp/quickcount/kelurahan.php";
     public static final String TAG_NAME = "nama";
     public static final String TAG_URL = "kode_wilayah";
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -67,7 +67,6 @@ public class Profil extends AppCompatActivity {
         actionBar.setIcon(R.mipmap.ic_launcher);
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
-
         actionBar.setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,15 +82,19 @@ public class Profil extends AppCompatActivity {
 
         final TPUAdapter adapter = new TPUAdapter(Profil.this, rowListItem);
         rView.setAdapter(adapter);
-        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.POST,DATA_URL, new Response.Listener<JSONObject>() {
+        String kode = getIntent().getExtras().getString("code");
+        Log.d("log",kode);
+        code = kode;
+        StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST,DATA_URL, new Response.Listener<String>() {
             @Override
-            public void onResponse(JSONObject response) {
+            public void onResponse(String response) {
                 Log.d(TAG, response.toString());
                 try {
-                    JSONArray jsonArray = response.getJSONArray("kelurahan");
-                    if (jsonArray.length() > 0 || jsonArray != null) {
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    JSONObject jsobj = new JSONObject(response);
+                    JSONArray kelurahan = jsobj.getJSONArray("kelurahan");
+                    if (kelurahan.length() > 0 || kelurahan != null) {
+                        for (int i = 0; i < kelurahan.length(); i++) {
+                            JSONObject jsonObject = kelurahan.getJSONObject(i);
                            TPU person = new TPU();
                             Log.d(TAG, jsonObject.toString());
                             person.nama = jsonObject.getString(TAG_NAME);
@@ -108,6 +111,7 @@ public class Profil extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),
                             "Error: " + e.getMessage(),
                             Toast.LENGTH_LONG).show();
+                    Log.d("flag",e.getMessage());
                 }
             }
         }, new Response.ErrorListener() {
@@ -117,16 +121,25 @@ public class Profil extends AppCompatActivity {
                 VolleyLog.d(TAG, "Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("flag", error.getMessage());
 
             }
-        });
-
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> map = new HashMap<String,String>();
+                Log.d("flag", code);
+                Log.d("flag", TAG_URL);
+                map.put(TAG_URL, code);
+                return map;
+            }
+        }
+                ;
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        requestQueue.add(jsonArrayRequest);
         AppController.getInstance().addToRequestQueue(jsonArrayRequest,tag_string_req);
         Log.d(TAG, jsonArrayRequest.toString());
-
-
-
-
     }
 
 

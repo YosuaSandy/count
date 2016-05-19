@@ -29,8 +29,7 @@
             android:name="com.example.sandy.quickcount.Mainmenu"
             android:icon="@drawable/woclass"
             android:label=".Mainmenu"
-            android:theme="@style/AppTheme2" >
-        </activity>
+            android:theme="@style/AppTheme2" />
         <activity
             android:name="com.example.sandy.quickcount.Profil"
             android:icon="@drawable/woclass"

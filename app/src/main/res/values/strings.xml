@@ -13,4 +13,6 @@
     <string name="subjudul">Menu utama</string>
     <string name="title_activity_searchresult">searchresult</string>
     <string name="search_hint">search_hint</string>
+    <string name="title_activity_pemilihan">Pemilihan</string>
+    <string name="title_activity_pilihan">Pilihan</string>
 </resources>

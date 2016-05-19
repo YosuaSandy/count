@@ -2,6 +2,7 @@ package com.example.sandy.quickcount;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,6 +16,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -27,6 +29,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -55,6 +58,7 @@ public class Mainmenu extends AppCompatActivity  {
     public static final String DATA_URL = "http://192.168.42.125:8080/xampp/quickcount/wilayah.php";
     public static final String TAG_NAME = "nama";
     public static final String TAG_URL = "kode_wilayah";
+    public static final String TAG_LEVEL = "level_wilayah";
     private String jsonResponse;
 
 
@@ -81,46 +85,43 @@ public class Mainmenu extends AppCompatActivity  {
         rowListItem = getAllItemList();
         final NamaAdapter rcAdapter = new NamaAdapter(Mainmenu.this, rowListItem);
         rView.setAdapter(rcAdapter);
-        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET,DATA_URL, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.d(TAG, response.toString());
-                try {
-                    JSONArray jsonArray = response.getJSONArray("wilayah");
-                    if (jsonArray.length() > 0 || jsonArray != null) {
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jsonObject = jsonArray.getJSONObject(i);
-                            Nama person = new Nama();
-                            Log.d(TAG, jsonObject.toString());
-                            person.nama = jsonObject.getString(TAG_NAME);
-                            person.kode_wilayah= jsonObject.getString(TAG_URL);
-                            rowListItem.add(i, person);
-                            Log.d(TAG, jsonObject.toString());
-                        }
-                        rcAdapter.notifyDataSetChanged();
-                        Log.d(TAG, response.toString());
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(),
-                            "Error: " + e.getMessage(),
-                            Toast.LENGTH_LONG).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // do something
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        AppController.getInstance().addToRequestQueue(jsonArrayRequest,tag_string_req);
-        Log.d(TAG, jsonArrayRequest.toString());
+        user();
+//                    JSONArray jsonArray = response.getJSONArray("wilayah");
+//                    if (jsonArray.length() > 0 || jsonArray != null) {
+//                        for (int i = 0; i < jsonArray.length(); i++) {
+//                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+//                            Nama person = new Nama();
+//                            Log.d(TAG, jsonObject.toString());
+//                            person.nama = jsonObject.getString(TAG_NAME);
+//                            person.kode_wilayah= jsonObject.getString(TAG_URL);
+//                            rowListItem.add(i, person);
+//                            Log.d(TAG, jsonObject.toString());
+//                        }
+//                        rcAdapter.notifyDataSetChanged();
+//                        Log.d(TAG, response.toString());
+//                    }
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                    Toast.makeText(getApplicationContext(),
+//                            "Error: " + e.getMessage(),
+//                            Toast.LENGTH_LONG).show();
+//                }
+//
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                // do something
+//                VolleyLog.d(TAG, "Error: " + error.getMessage());
+//                Toast.makeText(getApplicationContext(),
+//                        error.getMessage(), Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//
+//        AppController.getInstance().addToRequestQueue(jsonArrayRequest,tag_string_req);
+//        Log.d(TAG, jsonArrayRequest.toString());
     }
 
 
@@ -168,10 +169,49 @@ public class Mainmenu extends AppCompatActivity  {
         return allItems;
     }
 
+    private void user() {
+        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.POST,DATA_URL, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d(TAG, response.toString());
+                try {
+                    JSONArray jsonArray = response.getJSONArray("wilayah");
+                    if (jsonArray.length() > 0 || jsonArray != null) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            Nama person = new Nama();
+                            Log.d(TAG, jsonObject.toString());
+                            person.nama = jsonObject.getString(TAG_NAME);
+                            person.kode_wilayah= jsonObject.getString(TAG_URL);
+                            rowListItem.add(i, person);
+                            Log.d(TAG, jsonObject.toString());
+                        }
+                        Log.d(TAG, response.toString());
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(),
+                            "Error: " + e.getMessage(),
+                            Toast.LENGTH_LONG).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // do something
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
-
-
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest,tag_string_req);
+        Log.d(TAG, jsonArrayRequest.toString());
+    }
 }
 
 

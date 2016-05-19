@@ -31,13 +31,6 @@ public class NamaAdapter extends RecyclerView.Adapter<NamaAdapter.RecycleViewHol
 
     private List<Nama> itemList ;
     private Context context;
-    public static final String DATA_URL = "http://192.168.42.125:8080/xampp/quickcount/kelurahan.php";
-    public static final String TAG_NAME = "nama";
-    public static final String TAG_URL = "kode_wilayah";
-    private String mst_kode_wilayah;
-
-
-
 
 
     public NamaAdapter(Context context, List<Nama> itemList) {
@@ -91,17 +84,14 @@ public class NamaAdapter extends RecyclerView.Adapter<NamaAdapter.RecycleViewHol
         }
 
 
+
         @Override
         public void onClick(View view) {
-            Context.startActivity(new Intent(Context, Profil.class).putExtra(TAG_URL,mst_kode_wilayah));
+            Intent i = new Intent(context, Profil.class);
+                i.putExtra("code", Url.getText().toString());
+                context.startActivity(i);
         }
     }
-
-
-
-
-
-
 }
 
 

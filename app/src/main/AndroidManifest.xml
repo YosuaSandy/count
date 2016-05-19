@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.example.sandy.quickcount.AppController"
+        android:name=".AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,8 +23,7 @@
             android:name=".Mainmenu"
             android:icon="@drawable/woclass"
             android:label=".Mainmenu"
-            android:theme="@style/AppTheme2">
-        </activity>
+            android:theme="@style/AppTheme2" />
         <activity
             android:name=".Profil"
             android:icon="@drawable/woclass"
@@ -35,6 +34,11 @@
             android:icon="@drawable/woclass"
             android:label="@string/title_activity_keterangan"
             android:theme="@style/AppTheme2" />
+        <activity
+            android:name=".Pemilihan"
+            android:label="@string/title_activity_pemilihan"
+            android:icon="@drawable/woclass"
+            android:theme="@style/AppTheme2"></activity>
     </application>
 
 </manifest>

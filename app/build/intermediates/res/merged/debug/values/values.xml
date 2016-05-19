@@ -367,6 +367,8 @@
     <string name="title_activity_keterangan">Keterangan</string>
     <string name="title_activity_mainmenu">Mainmenu</string>
     <string name="title_activity_menu">Menu</string>
+    <string name="title_activity_pemilihan">Pemilihan</string>
+    <string name="title_activity_pilihan">Pilihan</string>
     <string name="title_activity_profil">Profil</string>
     <string name="title_activity_searchresult">searchresult</string>
     <string name="title_activity_test">test</string>

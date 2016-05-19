@@ -948,9 +948,11 @@ int string subjudul 0x7f07003e
 int string title_activity_keterangan 0x7f07003f
 int string title_activity_mainmenu 0x7f070040
 int string title_activity_menu 0x7f070041
-int string title_activity_profil 0x7f070042
-int string title_activity_searchresult 0x7f070043
-int string title_activity_test 0x7f070044
+int string title_activity_pemilihan 0x7f070042
+int string title_activity_pilihan 0x7f070043
+int string title_activity_profil 0x7f070044
+int string title_activity_searchresult 0x7f070045
+int string title_activity_test 0x7f070046
 int style AlertDialog_AppCompat 0x7f0a0088
 int style AlertDialog_AppCompat_Light 0x7f0a0089
 int style Animation_AppCompat_Dialog 0x7f0a008a

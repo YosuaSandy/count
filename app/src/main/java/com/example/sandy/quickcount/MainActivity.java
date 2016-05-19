@@ -116,7 +116,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void openProfile(){
         Intent intent = new Intent(MainActivity.this, Mainmenu.class);
-        intent.putExtra(KEY_USERNAME, username);
         startActivity(intent);
     }
 

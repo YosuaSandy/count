@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:2:1-40:12
+ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:2:1-39:12
 	package
 		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:3:5-43
 		INJECTED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml
@@ -22,7 +22,7 @@ ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:6:5-67
 	android:name
 		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:6:22-64
 application
-ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:8:5-38:19
+ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:8:5-37:19
 MERGED from [com.android.support:appcompat-v7:23.2.1] D:\Magang\quickcount\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:23.2.1] D:\Magang\quickcount\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.2.1] D:\Magang\quickcount\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\AndroidManifest.xml:7:5-20
@@ -57,7 +57,7 @@ MERGED from [com.android.support:support-v4:23.2.1] D:\Magang\quickcount\app\bui
 	android:theme
 		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:14:9-42
 	android:name
-		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:9:9-66
+		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:9:9-38
 activity#com.example.sandy.quickcount.MainActivity
 ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:15:9-21:20
 	android:name
@@ -73,7 +73,7 @@ ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:19:17-77
 	android:name
 		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:19:27-74
 activity#com.example.sandy.quickcount.Mainmenu
-ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:22:9-27:20
+ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:22:9-26:48
 	android:label
 		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:25:13-38
 	android:icon
@@ -83,25 +83,25 @@ ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:22:9-27:20
 	android:name
 		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:23:13-37
 activity#com.example.sandy.quickcount.Profil
-ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:28:9-32:48
+ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:27:9-31:48
 	android:label
-		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:31:13-35
+		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:30:13-35
 	android:icon
-		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:30:13-45
+		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:29:13-45
 	android:theme
-		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:32:13-45
+		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:31:13-45
 	android:name
-		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:29:13-35
+		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:28:13-35
 activity#com.example.sandy.quickcount.Keterangan
-ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:33:9-37:48
+ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:32:9-36:48
 	android:label
-		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:36:13-62
+		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:35:13-62
 	android:icon
-		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:35:13-45
+		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:34:13-45
 	android:theme
-		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:37:13-45
+		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:36:13-45
 	android:name
-		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:34:13-39
+		ADDED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml:33:13-39
 uses-sdk
 INJECTED from D:\Magang\quickcount\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.2.1] D:\Magang\quickcount\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\AndroidManifest.xml:21:5-23:78
