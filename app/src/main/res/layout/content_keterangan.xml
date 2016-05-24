@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="150dp"
         card_view:cardCornerRadius="10dp"
-        card_view:cardBackgroundColor="@color/red"
+        card_view:cardBackgroundColor="@android:color/transparent"
         card_view:cardElevation="5dp"
         card_view:cardUseCompatPadding="true">
 
@@ -53,23 +53,26 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textStyle="bold"
-            android:text="Label : "
-            android:textSize="21dp"
-            android:id="@+id/textlabel1"
-            android:layout_centerVertical="true"
+            android:text="Laki-laki "
+            android:textSize="18dp"
+            android:id="@+id/labellaki"
+            android:layout_marginTop="10dp"
+
 
             />
 
-        <EditText
-            android:id="@+id/edtlabel1"
+        <TextView
+            android:id="@+id/lakilaki"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
-            android:textSize="21dp"
+            android:textSize="18dp"
             android:singleLine="true"
             android:ellipsize="end"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/textlabel1"
-            android:background="@color/white"
+            android:layout_toRightOf="@+id/labellaki"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/white_transparent"
 
             />
 
@@ -77,26 +80,51 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textStyle="bold"
-            android:text="Label : "
-            android:textSize="21dp"
-            android:id="@+id/textlabel2"
-            android:layout_below="@+id/textlabel1"
-            android:layout_marginTop="50dp"
+            android:text="Perempuan  "
+            android:textSize="18dp"
+            android:id="@+id/labelperempuan"
+            android:layout_below="@+id/labellaki"
+            android:layout_marginTop="20dp"
             />
 
-        <EditText
-            android:id="@+id/edtlabel2"
+        <TextView
+            android:id="@+id/perempuan"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
-            android:textSize="21dp"
+            android:textSize="18dp"
             android:singleLine="true"
-            android:layout_toRightOf="@+id/textlabel2"
-            android:layout_below="@+id/textlabel1"
-            android:background="@color/white"
-            android:layout_marginTop="50dp"
+            android:layout_toRightOf="@+id/labelperempuan"
+            android:layout_below="@+id/lakilaki"
+            android:layout_centerHorizontal="true"
+            android:background="@color/white_transparent"
+            android:layout_marginTop="20dp"
 
             />
 
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:text="Total "
+            android:textSize="18dp"
+            android:id="@+id/labeltotal"
+            android:layout_below="@+id/labelperempuan"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:textSize="18dp"
+            android:singleLine="true"
+            android:layout_toRightOf="@+id/labelperempuan"
+            android:layout_below="@+id/perempuan"
+            android:layout_centerHorizontal="true"
+            android:background="@color/white_transparent"
+            android:layout_marginTop="20dp"
+
+            />
 
 
 
@@ -111,7 +139,7 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         card_view:cardCornerRadius="10dp"
         card_view:cardBackgroundColor="@color/orange"
         card_view:cardElevation="5dp"
@@ -133,7 +161,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textStyle="bold"
-            android:text="Calon 1 : "
+            android:text="Calon 1 "
             android:textSize="21dp"
             android:textColor="@color/white"
             android:id="@+id/textlabel3"
@@ -146,6 +174,7 @@
             android:layout_width="fill_parent"
             android:textSize="21dp"
             android:singleLine="true"
+            android:inputType="number"
             android:layout_toRightOf="@+id/textlabel3"
             android:background="@color/white"
 
@@ -155,7 +184,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textStyle="bold"
-            android:text="Calon 2 : "
+            android:text="Calon 2 "
             android:textSize="21dp"
             android:id="@+id/textlabel4"
             android:textColor="@color/white"
@@ -167,6 +196,7 @@
             android:id="@+id/edtlabel4"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
+            android:inputType="number"
             android:textSize="21dp"
             android:singleLine="true"
             android:layout_toRightOf="@+id/textlabel4"
@@ -175,7 +205,6 @@
             android:layout_marginTop="20dp"
 
             />
-
 
 
     </RelativeLayout>
@@ -190,7 +219,7 @@
         android:layout_height="150dp"
         card_view:cardCornerRadius="10dp"
         card_view:cardBackgroundColor="@color/orange"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         card_view:cardElevation="5dp"
         card_view:cardUseCompatPadding="true"
         android:layout_below="@+id/card_view2">
@@ -211,7 +240,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textStyle="bold"
-            android:text="Suara Sah : "
+            android:text="Suara Sah "
             android:textSize="21dp"
             android:textColor="@color/white"
             android:id="@+id/textlabel5"
@@ -234,7 +263,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textStyle="bold"
-            android:text="Suara Tidak Sah : "
+            android:text="Suara Tidak Sah  "
             android:textColor="@color/white"
             android:textSize="21dp"
             android:id="@+id/textlabel6"
@@ -246,6 +275,7 @@
             android:id="@+id/edtlabel6"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
+            android:inputType="number"
             android:textSize="21dp"
             android:singleLine="true"
             android:layout_toRightOf="@+id/textlabel6"
@@ -260,12 +290,18 @@
     </RelativeLayout>
 
     </android.support.v7.widget.CardView>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            android:id="@+id/button"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/card_view3"/>
 
     </RelativeLayout>
 
     </ScrollView>
-
-
-
 
 </RelativeLayout>

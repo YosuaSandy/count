@@ -10,6 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:clickable="true"
     android:focusable="true"
+    android:background="@drawable/woclass"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.sandy.quickcount.Profil"
     tools:showIn="@layout/activity_profil"
@@ -39,17 +40,17 @@
         android:textSize="18dp"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
         />
 
     <TextView
         android:id="@+id/alamat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_below="@+id/nomor"
         android:textStyle="bold"
         android:textColor="@color/white"
-
+        android:layout_centerHorizontal="true"
         />
 
 
