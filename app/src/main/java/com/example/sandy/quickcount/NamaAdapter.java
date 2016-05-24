@@ -19,6 +19,7 @@ import java.util.List;
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.BLUE;
 import static android.graphics.Color.RED;
+import static android.graphics.Color.alpha;
 import static com.example.sandy.quickcount.R.drawable.round;
 
 /**
@@ -78,9 +79,7 @@ public class NamaAdapter extends RecyclerView.Adapter<NamaAdapter.RecycleViewHol
             itemView.setOnClickListener(this);
             Nama = (TextView)itemView.findViewById(R.id.nama);
             Url = (TextView)itemView.findViewById(R.id.url);
-            itemView.setBackgroundResource(R.color.white);
-
-
+            itemView.setBackgroundResource(R.color.white_transparent);
         }
 
 

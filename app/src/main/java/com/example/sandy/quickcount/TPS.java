@@ -5,6 +5,7 @@ package com.example.sandy.quickcount;
  */
 public class TPS {
     String no_tps,alamat;
+
     public  TPS () {
 
     }

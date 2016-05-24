@@ -2,8 +2,10 @@ package com.example.sandy.quickcount;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +28,7 @@ public class TPUAdapter  extends RecyclerView.Adapter<TPUAdapter.RecycleViewHold
     public TPUAdapter(Context context, List<TPU> itemList) {
         this.tpuList = itemList;
         this.context = context;
+
     }
 
     @Override
@@ -63,6 +66,7 @@ public class TPUAdapter  extends RecyclerView.Adapter<TPUAdapter.RecycleViewHold
             itemView.setOnClickListener(this);
             TPS = (TextView)itemView.findViewById(R.id.TPS);
             DPS = (TextView)itemView.findViewById(R.id.DPS);
+            itemView.setBackgroundResource(R.color.orange_transparent);
         }
 
 
@@ -72,7 +76,9 @@ public class TPUAdapter  extends RecyclerView.Adapter<TPUAdapter.RecycleViewHold
         public void onClick(View view) {
 //            view.setBackgroundColor(Color.BLUE);
 //
-            Context.startActivity(new Intent(Context, Keterangan.class));
+            Intent i = new Intent(context, Pemilihan.class);
+            i.putExtra("pilihan", DPS.getText().toString());
+            context.startActivity(i);
 
         }
 
