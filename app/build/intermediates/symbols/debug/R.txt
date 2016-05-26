@@ -677,7 +677,6 @@ int id always 0x7f0d0035
 int id beginning 0x7f0d0031
 int id bottom 0x7f0d001d
 int id btnLogin 0x7f0d0072
-int id button 0x7f0d0088
 int id buttonPanel 0x7f0d0049
 int id cancel_action 0x7f0d009a
 int id card_view1 0x7f0d0074
@@ -781,6 +780,7 @@ int id search_plate 0x7f0d0067
 int id search_src_text 0x7f0d0068
 int id search_voice_btn 0x7f0d006c
 int id select_dialog_listview 0x7f0d006d
+int id send 0x7f0d0088
 int id shortcut 0x7f0d0058
 int id showCustom 0x7f0d0011
 int id showHome 0x7f0d0012

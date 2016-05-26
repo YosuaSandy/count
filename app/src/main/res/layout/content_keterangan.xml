@@ -295,7 +295,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Send"
-            android:id="@+id/button"
+            android:id="@+id/send"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/card_view3"/>

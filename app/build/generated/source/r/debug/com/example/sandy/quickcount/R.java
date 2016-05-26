@@ -2572,7 +2572,6 @@ containing a value of this type.
         public static final int beginning=0x7f0d0031;
         public static final int bottom=0x7f0d001d;
         public static final int btnLogin=0x7f0d0072;
-        public static final int button=0x7f0d0088;
         public static final int buttonPanel=0x7f0d0049;
         public static final int cancel_action=0x7f0d009a;
         public static final int card_view1=0x7f0d0074;
@@ -2676,6 +2675,7 @@ containing a value of this type.
         public static final int search_src_text=0x7f0d0068;
         public static final int search_voice_btn=0x7f0d006c;
         public static final int select_dialog_listview=0x7f0d006d;
+        public static final int send=0x7f0d0088;
         public static final int shortcut=0x7f0d0058;
         public static final int showCustom=0x7f0d0011;
         public static final int showHome=0x7f0d0012;
