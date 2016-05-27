@@ -49,11 +49,12 @@ public class Profil extends AppCompatActivity {
     private static final String TAG = Profil.class.getSimpleName();
     String tag_string_req = "req_data";
     private List<TPU> rowListItem;
-    private  String code;
+    private  String code,kecamatan;
 
     public static final String DATA_URL = "http://192.168.42.125:8080/xampp/quickcount/kelurahan.php";
     public static final String TAG_NAME = "nama";
     public static final String TAG_URL = "kode_wilayah";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +62,7 @@ public class Profil extends AppCompatActivity {
         setContentView(R.layout.activity_profil);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         ActionBar actionBar = getSupportActionBar();
-        setTitle("");
         actionBar.setIcon(R.mipmap.ic_launcher);
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
@@ -74,6 +73,13 @@ public class Profil extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        String kode = getIntent().getExtras().getString("code");
+        Log.d("log", kode);
+        code = kode;
+        String A = getIntent().getExtras().getString("kecamatan");
+        Log.d("flag",A);
+        kecamatan=A;
+        setTitle(kecamatan);
         rowListItem = prepareTPU();
         RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -82,9 +88,6 @@ public class Profil extends AppCompatActivity {
 
         final TPUAdapter adapter = new TPUAdapter(Profil.this, rowListItem);
         rView.setAdapter(adapter);
-        String kode = getIntent().getExtras().getString("code");
-        Log.d("log",kode);
-        code = kode;
         StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST,DATA_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

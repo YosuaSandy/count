@@ -36,7 +36,7 @@ public class Pemilihan extends AppCompatActivity {
     private Context context;
     String tag_string_req = "req_data";
     private List<TPS> rowListItem;
-    private  String pilih;
+    private  String pilih,kelurahan;
 
     public static final String DATA_URL = "http://192.168.42.125:8080/xampp/quickcount/tempat.php";
     public static final String TAG_NO = "no_tps";
@@ -51,7 +51,6 @@ public class Pemilihan extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
-        setTitle("");
         actionBar.setIcon(R.mipmap.ic_launcher);
         actionBar.setDisplayUseLogoEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
@@ -66,6 +65,12 @@ public class Pemilihan extends AppCompatActivity {
         String kode = getIntent().getExtras().getString("pilihan");
         Log.d("log", kode);
         pilih = kode;
+
+
+        String lurah = getIntent().getExtras().getString("kelurahan");
+        Log.d("log", kode);
+        kelurahan= lurah;
+        setTitle(kelurahan);
         rowListItem = prepareTPS();
         RecyclerView rView = (RecyclerView)findViewById(R.id.recycler_view);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(context);

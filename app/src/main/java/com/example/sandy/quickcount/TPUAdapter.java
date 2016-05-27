@@ -78,6 +78,8 @@ public class TPUAdapter  extends RecyclerView.Adapter<TPUAdapter.RecycleViewHold
 //
             Intent i = new Intent(context, Pemilihan.class);
             i.putExtra("pilihan", DPS.getText().toString());
+            i.putExtra("kelurahan", TPS.getText().toString());
+            Log.d("flag", "put " + TPS.getText().toString());
             context.startActivity(i);
 
         }

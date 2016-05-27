@@ -98,6 +98,7 @@
     <color name="orange_dark">#df7300</color>
     <color name="orange_light">#ffb34f</color>
     <color name="orange_transparent">#ccffb34f</color>
+    <color name="oranget">#ccff9203</color>
     <color name="primary_dark_material_dark">@android:color/black</color>
     <color name="primary_dark_material_light">@color/material_grey_600</color>
     <color name="primary_material_dark">@color/material_grey_900</color>

@@ -34,6 +34,7 @@ public class NamaAdapter extends RecyclerView.Adapter<NamaAdapter.RecycleViewHol
     private Context context;
 
 
+
     public NamaAdapter(Context context, List<Nama> itemList) {
         this.itemList = itemList;
         this.context = context;
@@ -87,8 +88,10 @@ public class NamaAdapter extends RecyclerView.Adapter<NamaAdapter.RecycleViewHol
         @Override
         public void onClick(View view) {
             Intent i = new Intent(context, Profil.class);
+            i.putExtra("kecamatan",Nama.getText().toString());
                 i.putExtra("code", Url.getText().toString());
                 context.startActivity(i);
+
         }
     }
 }

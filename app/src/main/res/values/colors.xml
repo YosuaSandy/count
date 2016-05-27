@@ -22,6 +22,7 @@
     <color name= "gray">#9f9f9f</color>
     <color name="orange_light">#ffb34f</color>
     <color name="orange">#ff9203</color>
+    <color name="oranget">#ccff9203</color>
     <color name="orange_transparent">#ccffb34f</color>
     <color name="orange_dark">#df7300</color>
     <color name="red">#ff0000</color>

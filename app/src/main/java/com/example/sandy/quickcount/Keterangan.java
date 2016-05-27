@@ -41,6 +41,7 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
     private TextView lakilaki,perempuan,total;
     public static final String DATA_URL = "http://192.168.42.125:8080/xampp/quickcount/peserta.php";
     public static final String DATA_URL2 = "http://192.168.42.125:8080/xampp/quickcount/send.php";
+    public static final String DATA_URL3 = "http://192.168.42.125:8080/xampp/quickcount/update.php";
     public static final String TAG_ID = "ID";
     public static final String TAG_LAKILAKI = "Laki-laki";
     public static final String TAG_PEREMPUAN = "Perempuan";
@@ -52,7 +53,8 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
     EditText calon2;
     EditText suaraTidakSah;
     TextView suaraSah;
-    private Button button1;
+    private Button buttonSend,buttonUpdate;
+    int flag=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +64,6 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
-        setTitle("");
         actionBar.setIcon(R.mipmap.ic_launcher);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayUseLogoEnabled(true);
@@ -73,8 +74,10 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
                 onBackPressed();
             }
         });
-        button1 = (Button) findViewById(R.id.send);
-        button1.setOnClickListener(this);
+        buttonSend = (Button) findViewById(R.id.send);
+        buttonSend.setOnClickListener(this);
+//        buttonUpdate = (Button) findViewById(R.id.update);
+//        buttonUpdate.setOnClickListener(this);
 
         lakilaki = (TextView) findViewById(R.id.lakilaki);
         perempuan = (TextView) findViewById(R.id.perempuan);
@@ -155,6 +158,7 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
 //        requestQueue.add(jsonArrayRequest);
         AppController.getInstance().addToRequestQueue(jsonArrayRequest, tag_string_req);
         Log.d("flag", jsonArrayRequest.toString());
+        setTitle(no);
     }
 
     @Override
@@ -253,16 +257,13 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
         });
     }
 
-    public void onClick(View v) {
-        suara();
 
-    }
-
-    private void suara() {
+    public void suara() {
         suara1 = calon1.getText().toString().trim();
         suara2 = calon2.getText().toString().trim();
         rusak = suaraTidakSah.getText().toString().trim();
         sah = suaraSah.getText().toString().trim();
+        int flag = 1;
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, DATA_URL2,
                 new Response.Listener<String>() {
@@ -295,7 +296,63 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+
+
     }
+
+    public void update(View view) {
+        suara1 = calon1.getText().toString().trim();
+        suara2 = calon2.getText().toString().trim();
+        rusak = suaraTidakSah.getText().toString().trim();
+        sah = suaraSah.getText().toString().trim();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, DATA_URL3,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.trim().equals("success")){
+                            Toast.makeText(Keterangan.this,"penyimpanan sukses",Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(Keterangan.this,response,Toast.LENGTH_LONG).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Keterangan.this,error.toString(),Toast.LENGTH_LONG ).show();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> map = new HashMap<String,String>();
+                map.put("id_tps",id);
+                map.put("calon1",suara1);
+                map.put("calon2",suara2);
+                map.put("rusak",rusak);
+                map.put("sah",sah);
+                return map;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        suara();
+        if(flag==1)
+        {
+            buttonSend.setEnabled(false);
+            Log.d("ins", "called");
+        }
+        flag=0;
+
+    }
+
 
 
 
