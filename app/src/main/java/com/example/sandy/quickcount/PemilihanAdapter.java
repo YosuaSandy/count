@@ -19,6 +19,7 @@ public class PemilihanAdapter extends RecyclerView.Adapter<PemilihanAdapter.Recy
     private List<TPS> tpsList;
     private Context context;
     private String pilih;
+    private int flag;
 
 
 
@@ -26,6 +27,7 @@ public class PemilihanAdapter extends RecyclerView.Adapter<PemilihanAdapter.Recy
         this.tpsList = itemList;
         this.context = context;
         this.pilih=pilih;
+        this.flag=1;
         Log.d("flag", "put " + pilih);
 
     }
@@ -77,12 +79,14 @@ public class PemilihanAdapter extends RecyclerView.Adapter<PemilihanAdapter.Recy
         public void onClick(View view) {
 //            view.setBackgroundColor(Color.BLUE);
 //
+
             Intent i = new Intent(context, Keterangan.class);
             Bundle extras = new Bundle();
             extras.putString("nomer", nomor.getText().toString());
             extras.putString("wilayah", pilihan);
+            extras.putInt("penanda", flag);
             i.putExtras(extras);
-            Log.d("flag", "put " + pilihan);
+            Log.d("flag", "put3 " +flag);
             context.startActivity(i);
 
         }

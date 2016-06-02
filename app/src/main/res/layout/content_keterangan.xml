@@ -300,7 +300,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/card_view3"
-            android:clickable="true"
+            android:clickable="false"
             />
 
         <Button

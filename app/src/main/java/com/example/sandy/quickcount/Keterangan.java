@@ -1,7 +1,11 @@
 package com.example.sandy.quickcount;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
@@ -37,7 +41,7 @@ import java.util.Map;
 
 public class Keterangan extends AppCompatActivity implements View.OnClickListener {
 
-    private String wilayah,no,cowo,cewe,jumlah,id,suara1,suara2,rusak,sah;
+    private String wilayah,no,cowo,cewe,jumlah,id,suara1,suara2,rusak,sah,tanda;
     private TextView lakilaki,perempuan,total;
     public static final String DATA_URL = "http://192.168.42.125:8080/xampp/quickcount/peserta.php";
     public static final String DATA_URL2 = "http://192.168.42.125:8080/xampp/quickcount/send.php";
@@ -53,8 +57,8 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
     EditText calon2;
     EditText suaraTidakSah;
     TextView suaraSah;
-    private Button buttonSend,buttonUpdate;
-    int flag=1;
+    private Button buttonSend;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +92,7 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
         suaraSah = (TextView) findViewById(R.id.edtlabel5);
         TotalSuaraSah();
 
+
         String nomor= getIntent().getExtras().getString("nomer");
         no = nomor;
         String kode = getIntent().getExtras().getString("wilayah");
@@ -114,8 +119,6 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
                             cewe = cewek;
                             jumlah = sum;
                             id =no_id;
-                            Log.d("flag", "get "+ id );
-
                         }
 //                        Log.d("flag", response.toString());
                     } lakilaki.setText(cowo);
@@ -182,15 +185,7 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...
                 return true;
-//
-//            case R.id.back:
-//                onBackPressed();
-//
-//                return true;
 
-//            case R.id.home:
-//                onBackPressed();
-//                return true;
 
             default:
                 // If we got here, the user's action was not recognized.
@@ -259,44 +254,42 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
 
 
     public void suara() {
-        suara1 = calon1.getText().toString().trim();
-        suara2 = calon2.getText().toString().trim();
-        rusak = suaraTidakSah.getText().toString().trim();
-        sah = suaraSah.getText().toString().trim();
-        int flag = 1;
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, DATA_URL2,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        if(response.trim().equals("success")){
-                            Toast.makeText(Keterangan.this,"penyimpanan sukses",Toast.LENGTH_LONG).show();
-                        }else{
-                            Toast.makeText(Keterangan.this,response,Toast.LENGTH_LONG).show();
+            suara1 = calon1.getText().toString().trim();
+            suara2 = calon2.getText().toString().trim();
+            rusak = suaraTidakSah.getText().toString().trim();
+            sah = suaraSah.getText().toString().trim();
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, DATA_URL2,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            if (response.trim().equals("success")) {
+                                Toast.makeText(Keterangan.this, "success", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(Keterangan.this, response, Toast.LENGTH_LONG).show();
+                            }
                         }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Keterangan.this,error.toString(),Toast.LENGTH_LONG ).show();
-                    }
-                }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> map = new HashMap<String,String>();
-                map.put("id_tps",id);
-                map.put("calon1",suara1);
-                map.put("calon2",suara2);
-                map.put("rusak",rusak);
-                map.put("sah",sah);
-                return map;
-            }
-        };
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(Keterangan.this, error.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> map = new HashMap<String, String>();
+                    map.put("id_tps", id);
+                    map.put("calon1", suara1);
+                    map.put("calon2", suara2);
+                    map.put("rusak", rusak);
+                    map.put("sah", sah);
+                    return map;
+                }
+            };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            requestQueue.add(stringRequest);
 
     }
 
@@ -305,6 +298,7 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
         suara2 = calon2.getText().toString().trim();
         rusak = suaraTidakSah.getText().toString().trim();
         sah = suaraSah.getText().toString().trim();
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, DATA_URL3,
                 new Response.Listener<String>() {
@@ -341,19 +335,26 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
 
     }
 
-    @Override
-    public void onClick(View v) {
-        suara();
-        if(flag==1)
-        {
-            buttonSend.setEnabled(false);
-            Log.d("ins", "called");
+    private boolean isFirstTime()
+    {
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.commit();
         }
-        flag=0;
-
+        return !ranBefore;
     }
 
+    @Override
+    public void onClick(View v) {
+            suara();
+            buttonSend.setEnabled(false);
 
+
+    }
 
 
 }

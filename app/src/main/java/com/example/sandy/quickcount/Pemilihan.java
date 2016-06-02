@@ -37,6 +37,7 @@ public class Pemilihan extends AppCompatActivity {
     String tag_string_req = "req_data";
     private List<TPS> rowListItem;
     private  String pilih,kelurahan;
+    int flag;
 
     public static final String DATA_URL = "http://192.168.42.125:8080/xampp/quickcount/tempat.php";
     public static final String TAG_NO = "no_tps";
