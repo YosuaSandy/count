@@ -80,9 +80,6 @@ public class Pemilihan extends AppCompatActivity {
         final PemilihanAdapter adapter = new PemilihanAdapter(Pemilihan.this, rowListItem,pilih);
         Log.d ("flag","put" +pilih);
         rView.setAdapter(adapter);
-//        String kode = getIntent().getExtras().getString("pilihan");
-//        Log.d("log", kode);
-//        pilih = kode;
         StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST,DATA_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

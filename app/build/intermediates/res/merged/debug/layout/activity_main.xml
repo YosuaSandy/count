@@ -55,13 +55,25 @@
         android:layout_below="@+id/password"
         android:elevation="10sp"/>
 
+    <Button
+        android:id="@+id/btnLoginHp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="@color/btn_login_bg"
+        android:text="Login menggunakan nomer HP"
+        android:textColor="@color/btn_login"
+        android:layout_below="@+id/btnLogin"
+        android:elevation="10sp"
+        android:onClick="noHp"/>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:textSize="21sp"
-        android:layout_below="@+id/btnLogin"
+        android:layout_below="@+id/btnLoginHp"
         android:layout_centerHorizontal="true"
         android:text="Dikembangkan oleh dinustek"
         android:textColor="@color/white"

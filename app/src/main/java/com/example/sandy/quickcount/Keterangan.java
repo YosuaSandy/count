@@ -41,7 +41,7 @@ import java.util.Map;
 
 public class Keterangan extends AppCompatActivity implements View.OnClickListener {
 
-    private String wilayah,no,cowo,cewe,jumlah,id,suara1,suara2,rusak,sah,tanda;
+    private String wilayah,no,cowo,cewe,jumlah,id,suara1,suara2,rusak,sah;
     private TextView lakilaki,perempuan,total;
     public static final String DATA_URL = "http://192.168.42.125:8080/xampp/quickcount/peserta.php";
     public static final String DATA_URL2 = "http://192.168.42.125:8080/xampp/quickcount/send.php";
@@ -334,20 +334,6 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
 
 
     }
-
-    private boolean isFirstTime()
-    {
-        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-        boolean ranBefore = preferences.getBoolean("RanBefore", false);
-        if (!ranBefore) {
-            // first time
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("RanBefore", true);
-            editor.commit();
-        }
-        return !ranBefore;
-    }
-
     @Override
     public void onClick(View v) {
             suara();
