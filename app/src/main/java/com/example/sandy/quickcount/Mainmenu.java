@@ -59,7 +59,7 @@ public class Mainmenu extends AppCompatActivity  {
     public static final String TAG_NAME = "nama";
     public static final String TAG_URL = "kode_wilayah";
     public static final String TAG_LEVEL = "level_wilayah";
-    private String username;
+    private String jsonResponse;
 
 
     @Override
@@ -69,13 +69,12 @@ public class Mainmenu extends AppCompatActivity  {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         ActionBar actionBar = getSupportActionBar();
+        setTitle("Mainmenu");
         actionBar.setLogo(R.mipmap.ic_launcher);
 
-        setTitle("Main Menu");
 
-        lLayout = new GridLayoutManager(Mainmenu.this, 3);
+        lLayout = new GridLayoutManager(Mainmenu.this, 2);
 
         rView = (RecyclerView) findViewById(R.id.recycler_view);
         rView.addItemDecoration(new VerticalSpaceDecoration(VERTICAL_ITEM_SPACE, TOP_ITEM_SPACE));
@@ -86,6 +85,42 @@ public class Mainmenu extends AppCompatActivity  {
         final NamaAdapter rcAdapter = new NamaAdapter(Mainmenu.this, rowListItem);
         rView.setAdapter(rcAdapter);
         user();
+//                    JSONArray jsonArray = response.getJSONArray("wilayah");
+//                    if (jsonArray.length() > 0 || jsonArray != null) {
+//                        for (int i = 0; i < jsonArray.length(); i++) {
+//                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+//                            Nama person = new Nama();
+//                            Log.d(TAG, jsonObject.toString());
+//                            person.nama = jsonObject.getString(TAG_NAME);
+//                            person.kode_wilayah= jsonObject.getString(TAG_URL);
+//                            rowListItem.add(i, person);
+//                            Log.d(TAG, jsonObject.toString());
+//                        }
+//                        rcAdapter.notifyDataSetChanged();
+//                        Log.d(TAG, response.toString());
+//                    }
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                    Toast.makeText(getApplicationContext(),
+//                            "Error: " + e.getMessage(),
+//                            Toast.LENGTH_LONG).show();
+//                }
+//
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                // do something
+//                VolleyLog.d(TAG, "Error: " + error.getMessage());
+//                Toast.makeText(getApplicationContext(),
+//                        error.getMessage(), Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//
+//        AppController.getInstance().addToRequestQueue(jsonArrayRequest,tag_string_req);
+//        Log.d(TAG, jsonArrayRequest.toString());
     }
 
 
@@ -117,7 +152,8 @@ public class Mainmenu extends AppCompatActivity  {
 
 
     private List<Nama> getAllItemList() {
-
+//
+//
         final List<Nama> allItems = new ArrayList<Nama>();
 //        allItems.add(new nama("Joko", "woclass"));
 //        allItems.add(new nama("Retno", "woclass"));
@@ -128,7 +164,7 @@ public class Mainmenu extends AppCompatActivity  {
 //        allItems.add(new nama("Joni", "woclass"));
 //        allItems.add(new nama("Indah", "woclass"));
 //        allItems.add(new nama("Retro", "woclass"));
-
+//
         return allItems;
     }
 
@@ -145,7 +181,7 @@ public class Mainmenu extends AppCompatActivity  {
                             Nama person = new Nama();
                             Log.d(TAG, jsonObject.toString());
                             person.nama = jsonObject.getString(TAG_NAME);
-                            person.kode_wilayah= jsonObject.getString(TAG_URL);
+//                            person.kode_wilayah= jsonObject.getString(TAG_URL);
                             rowListItem.add(i, person);
                             Log.d(TAG, jsonObject.toString());
                         }

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -44,6 +45,7 @@ public class TPUAdapter  extends RecyclerView.Adapter<TPUAdapter.RecycleViewHold
         TPU tpu = tpuList.get(position);
         holder.TPS.setText(tpu.getTps());
         holder.DPS.setText(tpu.getDps());
+        holder.image1.setImageResource(R.drawable.forward);
     }
 
     @Override
@@ -56,6 +58,7 @@ public class TPUAdapter  extends RecyclerView.Adapter<TPUAdapter.RecycleViewHold
 
         public TextView TPS,DPS;
         private Context Context;
+        public ImageView image1;
 
 
 
@@ -66,6 +69,7 @@ public class TPUAdapter  extends RecyclerView.Adapter<TPUAdapter.RecycleViewHold
             itemView.setOnClickListener(this);
             TPS = (TextView)itemView.findViewById(R.id.TPS);
             DPS = (TextView)itemView.findViewById(R.id.DPS);
+            image1 = (ImageView) itemView.findViewById(R.id.image);
             itemView.setBackgroundResource(R.color.orange_transparent);
         }
 

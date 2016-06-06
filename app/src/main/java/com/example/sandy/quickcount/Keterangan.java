@@ -41,7 +41,7 @@ import java.util.Map;
 
 public class Keterangan extends AppCompatActivity implements View.OnClickListener {
 
-    private String wilayah,no,cowo,cewe,jumlah,id,suara1,suara2,rusak,sah;
+    private String wilayah,no,address,cowo,cewe,jumlah,id,suara1,suara2,rusak,sah;
     private TextView lakilaki,perempuan,total;
     public static final String DATA_URL = "http://192.168.42.125:8080/xampp/quickcount/peserta.php";
     public static final String DATA_URL2 = "http://192.168.42.125:8080/xampp/quickcount/send.php";
@@ -95,6 +95,8 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
 
         String nomor= getIntent().getExtras().getString("nomer");
         no = nomor;
+        String alamat= getIntent().getExtras().getString("alamat");
+        address = alamat;
         String kode = getIntent().getExtras().getString("wilayah");
         wilayah = kode;
         final StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST,DATA_URL, new Response.Listener<String>() {
@@ -114,7 +116,6 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
                             String sum = jsonObject.getString(TAG_TOTAL);
                             String no_id = jsonObject.getString(TAG_ID);
 //                            Log.d("flag", jsonObject.toString());
-
                             cowo = cowok;
                             cewe = cewek;
                             jumlah = sum;
@@ -161,7 +162,8 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
 //        requestQueue.add(jsonArrayRequest);
         AppController.getInstance().addToRequestQueue(jsonArrayRequest, tag_string_req);
         Log.d("flag", jsonArrayRequest.toString());
-        setTitle(no);
+        setTitle("TPS :" + no);
+        actionBar.setSubtitle(address);
     }
 
     @Override
@@ -264,9 +266,9 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
                         @Override
                         public void onResponse(String response) {
                             if (response.trim().equals("success")) {
-                                Toast.makeText(Keterangan.this, "success", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Keterangan.this, response, Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(Keterangan.this, response, Toast.LENGTH_LONG).show();
+                                Toast.makeText(Keterangan.this, response, Toast.LENGTH_SHORT).show();
                             }
                         }
                     },
@@ -290,7 +292,7 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringRequest);
-
+            openProfile();
     }
 
     public void update(View view) {
@@ -336,11 +338,10 @@ public class Keterangan extends AppCompatActivity implements View.OnClickListene
     }
     @Override
     public void onClick(View v) {
-            suara();
-            buttonSend.setEnabled(false);
-
-
+        suara();
     }
 
-
+    private void openProfile(){
+        onBackPressed();
+    }
 }

@@ -49,7 +49,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:visibility="gone"
+
+        />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
 
         />
 

@@ -81,6 +81,7 @@ public class PemilihanAdapter extends RecyclerView.Adapter<PemilihanAdapter.Recy
             Intent i = new Intent(context, Keterangan.class);
             Bundle extras = new Bundle();
             extras.putString("nomer", nomor.getText().toString());
+            extras.putString("alamat", alamat.getText().toString());
             extras.putString("wilayah", pilihan);
             i.putExtras(extras);
             context.startActivity(i);
